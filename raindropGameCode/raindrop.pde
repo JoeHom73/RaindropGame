@@ -1,3 +1,6 @@
+
+
+
 class Raindrop { 
   PVector loc, vel, acc;
   int diam;
@@ -9,10 +12,10 @@ class Raindrop {
     speed = tspeed;
     diam = size;
     loc = new PVector(random(diam, width-diam), random(diam, height-diam));
-    vel = new PVector(0, random (1,5));
+    vel = new PVector(0, 1, 5);
     vel.mult(3);
     acc = PVector.random2D();
-    acc.mult(.001);
+    acc.mult(2);
     c = color(random(255), random(255), random(255));
   }
 
@@ -24,8 +27,8 @@ class Raindrop {
   }
   void move() {
 
-    acc = PVector.random2D();
-    acc.mult(.5);
+    acc = new PVector(0, 2);
+    acc.mult(15);
     vel.add(acc);
     vel.limit(10);
     loc.add(vel);
@@ -38,19 +41,43 @@ class Raindrop {
       c = color(random(255), random(255), random(255));
     }
   }
-  boolean isInContactWith (float mouse) {
-    if (mouse == loc.x +- diam || mouse == loc.y +- diam) {
-      
-    mouse = new PVector(mouseX, mouseY);
+
+
+  boolean isInContactWith (Catcher c) {
+    if (loc.dist(c.loc) <= diam/2) {
+
+      return true;
+    } else {
+      return false;
+      //}
+    }
   }
+
 
   void reset() {
     loc.y= 0-diam/2;
+    vel= new PVector(0, random(1, 3));
     loc.add(vel);
     vel.limit(12);
   }
+
   void fall() {
     loc.add(vel);
-   
+  }
+}
+
+
+class Catcher {
+  PVector loc;
+  int diam;
+
+  Catcher(int tDiam) {
+    loc = new PVector(mouseX, mouseY);
+    diam = tDiam;
+  }
+  void display() {
+    fill(0);
+    noStroke();
+    ellipse(loc.x, loc.y, diam, diam);
   }
 }
