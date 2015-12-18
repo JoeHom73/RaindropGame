@@ -6,6 +6,7 @@ class Raindrop {
   int diam;
   color c;
   int speed;
+  
 
   //this is a constructor. you can have more than one constructor for a given class
   Raindrop(int tspeed, int size) {
@@ -63,21 +64,5 @@ class Raindrop {
 
   void fall() {
     loc.add(vel);
-  }
-}
-
-
-class Catcher {
-  PVector loc;
-  int diam;
-
-  Catcher(int tDiam) {
-    loc = new PVector(mouseX, mouseY);
-    diam = tDiam;
-  }
-  void display() {
-    fill(0);
-    noStroke();
-    ellipse(loc.x, loc.y, diam, diam);
   }
 }
