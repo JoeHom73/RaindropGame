@@ -15,18 +15,18 @@ void setup() {
     //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
     r[i] = new Raindrop(1, 30);   //Initialize r. The parameters used are the initial x and y positio);
   }
-  c = new Catcher(50); 
+  c = new Catcher(50);
 }
 void draw() {
   background(0, 200, 255);
-    
+  c.display();
+  c.move();
   for (int i=0; i < count; i++) {
-    c.display();
-    c.move();
+
     //mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
-    r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
+    r[i].move();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
     r[i].display();      //display the raindr);
-  
+
     if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
       r[i].reset();                         //if it is, reset th*/e raindrop
     }
