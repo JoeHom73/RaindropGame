@@ -32,10 +32,10 @@ class Raindrop {
 
 
     //acc.mult(15);
-   
+
     loc.add(vel);
     vel.limit(10);
-     if (score == 25) {
+    if (score == 25) {
       vel = new PVector(0, 2);
       println("speed up");
     }
@@ -45,14 +45,13 @@ class Raindrop {
     }
 
     if (score == 200) {
-     vel = new PVector(0, 4);
-     println("speed up");
+      vel = new PVector(0, 4);
+      println("speed up");
     }
     if (score == 300) {
       vel = new PVector(0, 5);
       println("speed up");
     }
-    
   }
   /*******
    void center() {
@@ -68,8 +67,8 @@ class Raindrop {
 
   boolean isInContactWith (Catcher thing) { 
     if (thing.loc.dist(loc) < thing.diam/2+diam) { //if the distace between catcher and raindrop is the less than or equal to diam
-      println("Caught a raindrop in frame " + frameCount);
-      score = score +1; 
+      score = score +1;
+      println(score);
       return true;
     } else {
       return false;
