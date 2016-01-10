@@ -16,7 +16,7 @@ Catcher c;
 
 void setup() {
   count = 10;
-  size(1200, 800);
+  size(1000, 750);
   fill(0);
   textSize(25);
   text("hold left mouse to play game", width/2, height/2);  
@@ -24,9 +24,9 @@ void setup() {
   //mouse = new PVector();     
   for (int i=0; i < count; i++) {
     //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-    r[i] = new Raindrop(1, 10);   //Initialize r. The parameters used are the initial x and y positio);
+    r[i] = new Raindrop(1, 5);   //Initialize r. The parameters used are the initial x and y positio);
   }
-  c = new Catcher(150);
+  c = new Catcher(100);
 }
 
 
