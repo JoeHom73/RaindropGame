@@ -1,21 +1,25 @@
 class Raindrop { 
-  PVector loc, vel, acc;
+  PVector loc, acc;
+  PVector vel [] = new PVector [count];
   int diam;
   color c;
   int speed;
   int fast = 1;
   int score = 0;
-  float   xvel = random(3);
+  float   xvel [] = new float [count];
   //this is a constructor. you can have more than one constructor for a given class
-  Raindrop(int tspeed, int size) {    
-    diam = size; //set raindrop size
+  Raindrop(float tspeed, int size) {   
 
-    loc = new PVector(random(diam, width-diam), 0); //set raindrop location 
-    vel = new PVector(xvel, tspeed); //choose raindrop velocity 
-    vel.mult(3); //multiply raindrop velocity 
-    acc = new PVector(0, 2);  //give a random acceleration
-    acc.mult(.5); // multiply acceleration 
-    c = color(random(255), random(255), random(255)); //set color
+    diam = size; //set raindrop size
+    for (int i=0; i < count; i++) {
+      tspeed = random(5);
+      loc = new PVector(random(diam, width-diam), 0); //set raindrop location 
+      vel[i] = new PVector(0, tspeed); //choose raindrop velocity 
+      vel[i].mult(3); //multiply raindrop velocity 
+      acc = new PVector(0, 2);  //give a random acceleration
+      acc.mult(.5); // multiply acceleration 
+      c = color(random(255), random(255), random(255)); //set color
+    }
   }
   //after declaring fields and setting up constructors, you can define your methods
   void display() { //display the raindrop
@@ -25,18 +29,18 @@ class Raindrop {
   }
   void move() {
     //acc.mult(15);
-    loc.add(vel);
-   for (int i=0; i < count; i++) {
-      if (r[i].loc.x > width + r[i].diam/2) {
-        vel.x= -abs(vx);
+
+    for (int i=0; i < count; i++) {
+      loc.add(vel[i]);
+      vel[i].limit(.18);
+      if (r[i].loc.x +  r[i].diam/2 >= width ) {
+        vel[i].x= -abs(vel[i].x);
       }
-      
-      
-      
-
-    
+      if (r[i].loc.x - r[i].diam/2 <= 0 ) {
+        vel[i].x= abs(vel[i].x);
+      }
+    }
   }
-
   /*******
    void center() {
    if (loc.x-diam >= width || loc.y-diam >= height || loc.x+diam <= 0 || loc.y+diam <= 0) { 
@@ -58,9 +62,11 @@ class Raindrop {
     }
   }
   void reset() {
-    loc.y= 0-diam*5;
-    loc.x=random(0, width);
-    loc.add(vel);
+    for (int i=0; i < count; i++) {
+      loc.y= 0-diam*5;
+      loc.x=random(0, width);
+      loc.add(vel[i]);
+    }
   }
   //void fall() {
   //  loc.add(vel);

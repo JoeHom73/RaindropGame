@@ -10,7 +10,8 @@ class timer {
   void display() {
     if (frameCount < 300) {
       background(0);
-      text("starting soon, try to get to 500 points!", 300, 300); 
+      text("starting soon, try to get to 500 points!", 300, 300);
+        text("don't let the rain drops hit the ground!", 300, 500); 
     }
  if (frameCount <= 60) {
       time = 5;

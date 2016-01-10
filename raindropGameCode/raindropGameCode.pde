@@ -3,6 +3,9 @@ int score= 0;
 int stage = 1; 
 int fast = 1;
 int speed = 1;
+int tspeed = 1;
+ 
+
 Raindrop[] r = new Raindrop [count];      //declare a new Raindrop called r
 Catcher c;
 timer t;
@@ -13,6 +16,7 @@ timer t;
 
 
 void setup() {
+ 
   frameRate(60);
   count = 20;
   score = 0;
@@ -90,6 +94,7 @@ void draw() {
         fill(0);
         textSize(50);
         text("You Lose!", width/2.5, height/2);
+        
       }
     }
   }
@@ -100,5 +105,8 @@ void draw() {
     textSize(50);
     text("you win!", width/2.5, height/2);
   }
-   
+  
+  
   }
+  
+ 
