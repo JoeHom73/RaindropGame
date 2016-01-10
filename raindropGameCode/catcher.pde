@@ -10,6 +10,7 @@ class Catcher {
     fill(255);
     noStroke();
     ellipse(loc.x, loc.y, diam, diam);
+    
   }
   void move() {  
    loc.x = mouseX;
