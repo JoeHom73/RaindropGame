@@ -1,6 +1,3 @@
-
-
-
 class Raindrop { 
   PVector loc, vel, acc;
   int diam;
@@ -8,20 +5,18 @@ class Raindrop {
   int speed;
   int fast = 1;
   int score = 0;
-
-
+  float   xvel = random(3);
   //this is a constructor. you can have more than one constructor for a given class
-  Raindrop(int tspeed, int size) { 
-    speed = tspeed; //set speed
+  Raindrop(int tspeed, int size) {    
     diam = size; //set raindrop size
+
     loc = new PVector(random(diam, width-diam), 0); //set raindrop location 
-    vel = new PVector(0, 2); //choose raindrop velocity 
+    vel = new PVector(xvel, tspeed); //choose raindrop velocity 
     vel.mult(3); //multiply raindrop velocity 
     acc = new PVector(0, 2);  //give a random acceleration
     acc.mult(.5); // multiply acceleration 
     c = color(random(255), random(255), random(255)); //set color
   }
-
   //after declaring fields and setting up constructors, you can define your methods
   void display() { //display the raindrop
     fill(c); //choose color
@@ -29,52 +24,19 @@ class Raindrop {
     ellipse(loc.x, loc.y, diam, diam*5); //raindrop location
   }
   void move() {
-
-
     //acc.mult(15);
-
     loc.add(vel);
-<<<<<<< HEAD
-    vel.limit(10);
-    if (score == 25) {
-      vel = new PVector(0, 2);
-      println("speed up");
-    }
-    if (score == 100) {
-      vel = new PVector(0, 3);
-      println("speed up");
-    }
+   for (int i=0; i < count; i++) {
+      if (r[i].loc.x > width + r[i].diam/2) {
+        vel.x= -abs(vx);
+      }
+      
+      
+      
 
-    if (score == 200) {
-      vel = new PVector(0, 4);
-      println("speed up");
-    }
-    if (score == 300) {
-      vel = new PVector(0, 5);
-      println("speed up");
-=======
-    if (score >= 0 && score <= 24) {
-      vel.limit(2);
-      if (score >= 25 && score <= 50) {
-        vel.limit(5);
-        println("speed up1");
-      }
-      if (score >= 51 && score <= 100) {
-        vel.limit(7);
-        println("speed up2");
-      }
-
-      if (score >= 101 && score <= 125) {
-        vel.limit(9);
-        println("speed up3");
-      }
-      if (score >= 126) {
-        vel.limit(13);
-        println("speed up4");
-      }
->>>>>>> origin/joe-version
-    }
+    
   }
+
   /*******
    void center() {
    if (loc.x-diam >= width || loc.y-diam >= height || loc.x+diam <= 0 || loc.y+diam <= 0) { 
@@ -85,14 +47,8 @@ class Raindrop {
    }
    }
    *************/
-
-
   boolean isInContactWith (Catcher thing) { 
     if (thing.loc.dist(loc) < thing.diam/2+diam) { //if the distace between catcher and raindrop is the less than or equal to diam
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/joe-version
       score = score +1;
       println(score);
       return true;
@@ -101,16 +57,11 @@ class Raindrop {
       //}
     }
   }
-
-
   void reset() {
     loc.y= 0-diam*5;
     loc.x=random(0, width);
-    vel= vel.mult(1.0000000000005);
     loc.add(vel);
-    vel.limit(10);
   }
-
   //void fall() {
   //  loc.add(vel);
   //}
