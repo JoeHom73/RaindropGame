@@ -1,6 +1,6 @@
 
 
-int count = 10; 
+int count = 50; 
 int score= 0;
 int stage = 1; 
 int fast = 1;
@@ -18,11 +18,11 @@ Catcher b;
 
 
 void setup() {
-  count = 10;
+  count = 50;
   size(1000, 750);
   fill(0);
   textSize(25);
-  text("hold left mouse to play game", width/2, height/2);  
+  text("get ready", width/2, height/2);  
   text(score, width -50, height -50);
   //mouse = new PVector();     
   for (int i=0; i < count; i++) {
@@ -40,11 +40,11 @@ void draw() {
   text(score, width -50, height -50);
   text("level:", 50, height-50);
   text(stage, 115, height-50);
-rect(100, height-5, lenghtc, 5);
-rect(500, height-5, lenghtb, 5);
+  rect(100, height-5, lenghtc, 5);
+  rect(500, height-5, lenghtb, 5);
 
   //  background(0, 200, 255);
- for (int i=0; i < count; i++) {
+  for (int i=0; i < count; i++) {
     if (score == 50 && (r[i].isInContactWith(c))) {
       stage = stage +1;
       println("level up");
@@ -69,40 +69,55 @@ rect(500, height-5, lenghtb, 5);
     }
   }
 
-  if (mousePressed) {
+  if (frameCount >= 100) {
     fill(0, 35);
     rect(0, 0, width, height);
-    c.move();
-    c.display();
-    b.display();
-    for (int i=0; i < count; i++) {
-      //mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
-      r[i].move();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
-      r[i].display();      //display the raindr);
-
-      if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+   for (int i=0; i < count; i++) {
+    if (lenghtc >= 0) {
+      c.display();
+       c.move('a', 'd', 'w', 's' );
+       if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
         r[i].reset();        //if it is, reset th*/e raindrop
         score = score +1;
+        if (lenghtc > -2) {
         lenghtc=lenghtc-2;
+        }
       }
-       if (r[i].isInContactWith(b)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+    }
+    if (lenghtb >= 0) {
+      b.display();
+      b.move('h', 'k','u','j');
+      if (r[i].isInContactWith(b)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
         r[i].reset();        //if it is, reset th*/e raindrop
         score = score +1;
+        if (lenghtb > -2) {
         lenghtb=lenghtb-2;
       }
+      }
+    }
+    
+      ////mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
+      r[i].move();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
+      r[i].display();      //display the raindr);
+      //if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+      //  r[i].reset();        //if it is, reset the raindrop
+     //   score = score +1;
+      //  if (lenghtc > -2) {
+       // lenghtc=lenghtc-2;
+       // }
+     // }
+
+      //if (r[i].isInContactWith(b)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
+      //  r[i].reset();        //if it is, reset the raindrop
+      //  score = score +1;
+      //  if (lenghtb > -2) {
+      //  lenghtb=lenghtb-2;
+      //}
+      //}
       if (r[i].loc.y > height + r[i].diam/2) {     //check to see if the raindrop goes below the bottom of the screen
         r[i].reset();                           //if it does, reset the raindrop
       }
     }
-    if(lenghtc <=0){
-      fill(0, 255,0);
-      rect(0,0, width ,height);
-    }
-   if(lenghtb <=0){
-      fill(255, 0,0);
-      rect(0,0, width ,height);
-    }
     
   }
- 
 }
