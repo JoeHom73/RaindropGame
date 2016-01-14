@@ -75,23 +75,23 @@ void draw() {
    for (int i=0; i < count; i++) {
     if (lenghtc >= 0) {
       c.display();
-       c.move('a', 'd', 'w', 's' );
+      c.move();
        if (r[i].isInContactWith(c)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
         r[i].reset();        //if it is, reset th*/e raindrop
         score = score +1;
         if (lenghtc > -2) {
-        lenghtc=lenghtc-2;
+        lenghtc=lenghtc-1;
         }
       }
     }
     if (lenghtb >= 0) {
       b.display();
-      b.move('h', 'k','u','j');
+      b.move();//('h', 'k','u','j');
       if (r[i].isInContactWith(b)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
         r[i].reset();        //if it is, reset th*/e raindrop
         score = score +1;
         if (lenghtb > -2) {
-        lenghtb=lenghtb-2;
+        lenghtb=lenghtb-1;
       }
       }
     }
@@ -120,4 +120,54 @@ void draw() {
     }
     
   }
+}
+
+void keyPressed(){
+  if(key=='h'){
+    b.thekeyleft=true;
+  }
+  if(key=='k'){
+    b.thekeyright=true;
+  }if(key=='u'){
+    b.thekeyup=true;
+  }if(key=='j'){
+    b.thekeydown=true;
+  }
+  if(key=='a'){
+    c.thekeyleft=true;
+  }
+  if(key=='d'){
+    c.thekeyright=true;
+  }if(key=='w'){
+    c.thekeyup=true;
+  }if(key=='s'){
+    c.thekeydown=true;
+  }
+}
+
+void keyReleased() {
+  
+  if(key=='h'){
+    b.thekeyleft=false;
+  }
+  if(key=='k'){
+    b.thekeyright=false;
+  }if(key=='u'){
+    b.thekeyup=false;
+  }if(key=='j'){
+    b.thekeydown=false;
+  }
+   if(key=='a'){
+    c.thekeyleft=false;
+  }
+  if(key=='d'){
+    c.thekeyright=false;
+  }if(key=='w'){
+    c.thekeyup=false;
+  }if(key=='s'){
+    c.thekeydown=false;
+  }
+
+  
+  
 }

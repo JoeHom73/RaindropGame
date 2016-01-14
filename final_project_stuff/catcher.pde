@@ -1,6 +1,7 @@
 class Catcher {
   PVector loc;
   int diam;
+  boolean thekeyleft,thekeyright,thekeyup,thekeydown;
 
   Catcher(int tDiam) {
 
@@ -14,20 +15,38 @@ class Catcher {
     noStroke();
     ellipse(loc.x, loc.y, diam, diam);
   }
-  void move(char thekeyleft, char thekeyright, char thekeyup, char thekeydown) {
-    if (keyPressed && key == thekeyleft) {
+  //void move(char thekeyleft, char thekeyright, char thekeyup, char thekeydown) {
+  //  if (keyPressed && key == thekeyleft) {
+  //    loc.x = loc.x-.1;
+  //    println("moveleft");
+  //  }
+  //  if (keyPressed && key == thekeyright) {
+  //    loc.x = loc.x+.1;
+  //    println("moveright");
+  //  }
+  //  if (keyPressed && key == thekeyup) {
+  //    loc.y = loc.y-.1;
+  //    println("moveup");
+  //  }
+  //  if (keyPressed && key == thekeydown) {
+  //    loc.y = loc.y+.1;
+  //    println("movedown");
+  //  }
+  //}
+   void move() {
+    if(thekeyleft) {
       loc.x = loc.x-.1;
       println("moveleft");
     }
-    if (keyPressed && key == thekeyright) {
+    if (thekeyright) {
       loc.x = loc.x+.1;
       println("moveright");
     }
-    if (keyPressed && key == thekeyup) {
-      loc.y = loc.y+.1;
+    if (thekeyup) {
+      loc.y = loc.y-.1;
       println("moveup");
     }
-    if (keyPressed && key == thekeydown) {
+    if (thekeydown) {
       loc.y = loc.y+.1;
       println("movedown");
     }
