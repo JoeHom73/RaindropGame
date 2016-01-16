@@ -19,18 +19,26 @@ timer t;
 void setup() {
   frameRate(60);
   count = 10;
+<<<<<<< HEAD
   score = 0;
   size(1200, 800);
+=======
+  size(1000, 750);
+>>>>>>> origin/joe-version
   fill(0);
   textSize(25);
   text(score, width -50, height -50);
   //mouse = new PVector();     
   for (int i=0; i < count; i++) {
     //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
-    r[i] = new Raindrop(1, 10);   //Initialize r. The parameters used are the initial x and y positio);
+    r[i] = new Raindrop(1, 5);   //Initialize r. The parameters used are the initial x and y positio);
   }
+<<<<<<< HEAD
   c = new Catcher(150);
   t = new timer();
+=======
+  c = new Catcher(100);
+>>>>>>> origin/joe-version
 }
 
 
